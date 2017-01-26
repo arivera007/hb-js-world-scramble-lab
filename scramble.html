@@ -7,6 +7,8 @@
     <h1>A Javascript Word Scramble Game</h1>
 
     <script>
+        "use strict";
+
         var WORDS     = ["booger", "apple", "hackbright", "mango"];
         var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman"];
 
@@ -16,36 +18,36 @@
           return Math.floor(Math.random() * (max - min)) + min;
         }
 
-        var randint;
-
         var playing = true;
 
         while (playing) {
 
             // Grab a random word from the WORDS array.
-            randint = getRandomInt(0, 3);
-            var theWord = WORDS[randint];
+            var randInt = getRandomInt(0, 3);
+            var theWord = WORDS[randInt];
 
             // Grab the corresponding scrambled word from the SCRAMBLED array.
-            var theScrambledWord = SCRAMBLED[randint];
+            var theScrambledWord = SCRAMBLED[randInt];
 
             // Prompt the user to guess the original word when given the scrambled word.
-            alert("Scrambled word:", theScrambledWord);
-            var user_guess = prompt("Guess the original word!");
+            alert("Scrambled word: " + theScrambledWord);
+            var userGuess = prompt("Guess the original word!").toLowerCase().trim();
 
             // If the user guesses wrong, tell them they were wrong and show the right word.
-            if (user_guess != theWord) {
-                alert("You're wrong! The original word was", theWord);
-            }
-            
             // If the user guesses the correct word, congratulate them.
-            playing = confirm("Press OK To keep playing or Cancel to quit");
+            if (userGuess != theWord) {
+                alert("You're wrong! The original word was " + theWord);
+            } else {
+                alert("Congratulations! You guessed the right word.");
+            }
+
+            playing = confirm("Press OK to keep playing or Cancel to quit");
 
             // What does confirm() return?
             // What does setting the playing variable do?
         }
 
-        alert("goodbye!");
+        alert("Goodbye!");
     </script>
     
 </body>
